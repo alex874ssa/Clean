@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЧистоТак — Клининговая компания</title>
+    <style>
+        body { font-family: sans-serif; background: #f8f8f8; margin: 0; color: #333; }
+        header, footer { background: #fff; padding: 20px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        nav a { margin: 0 15px; text-decoration: none; color: #333; }
+        section { padding: 40px 20px; max-width: 800px; margin: auto; background: #fff; margin-top: 20px; border-radius: 10px; }
+        input, select, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background: #00aaff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #008ecc; }
+        .result { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ЧистоТак</h1>
+        <nav>
+            <a href="#about">О нас</a>
+            <a href="#services">Услуги</a>
+            <a href="#pricing">Цены</a>
+            <a href="#faq">Вопросы</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header><section id="about">
+    <h2>О нас</h2>
+    <p>«ЧистоТак» — это семейная клининговая компания, предоставляющая качественные услуги уборки в Вене. Мы заботимся о вашем доме, как о своём.</p>
+</section>
+
+<section id="services">
+    <h2>Услуги</h2>
+    <ul>
+        <li>Поверхностная уборка</li>
+        <li>Генеральная уборка</li>
+        <li>Уборка после ремонта</li>
+        <li>Поддерживающая уборка</li>
+    </ul>
+</section>
+
+<section id="pricing">
+    <h2>Калькулятор стоимости</h2>
+    <label>Площадь квартиры (м²):</label>
+    <input type="number" id="area" placeholder="например, 50">
+
+    <label>Количество комнат:</label>
+    <input type="number" id="rooms" placeholder="например, 2">
+
+    <label>Тип уборки:</label>
+    <select id="type">
+        <option value="1">Поверхностная уборка</option>
+        <option value="1.5">Генеральная уборка</option>
+        <option value="2">Уборка после ремонта</option>
+    </select>
+
+    <button onclick="calculate()">Рассчитать</button>
+    <div class="result" id="result"></div>
+</section>
+
+<section id="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <p><strong>Сколько времени занимает уборка?</strong><br>В среднем 1 час на каждые 20 м² при стандартной уборке.</p>
+    <p><strong>Нужно ли предоставлять свои моющие средства?</strong><br>Нет, мы приезжаем со всем необходимым.</p>
+    <p><strong>Как происходит оплата?</strong><br>Наличными или банковским переводом после выполнения уборки.</p>
+</section>
+
+<section id="contact">
+    <h2>Оставьте заявку</h2>
+    <form>
+        <input type="text" placeholder="Ваше имя">
+        <input type="tel" placeholder="Телефон">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Комментарий или адрес"></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+    <p>Телефон: +43 676 7489316<br>Email: gender.center.andrew@gmail.com</p>
+</section>
+
+<footer>
+    &copy; 2025 ЧистоТак. Все права защищены.
+</footer>
+
+<script>
+    function calculate() {
+        const area = parseFloat(document.getElementById('area').value);
+        const rooms = parseInt(document.getElementById('rooms').value);
+        const type = parseFloat(document.getElementById('type').value);
+
+        if (isNaN(area) || isNaN(rooms)) {
+            document.getElementById('result').innerText = 'Пожалуйста, введите корректные данные.';
+            return;
+        }
+
+        const basePrice = 1.5; // евро за м²
+        const timePer20 = 1; // час на 20 м²
+        const price = (area * basePrice * type).toFixed(2);
+        const time = Math.ceil(area / 20);
+
+        document.getElementById('result').innerText = `Примерная стоимость: €${price}. Время уборки: ~${time} ч.`;
+    }
+</script>
+
+</body>
+</html>
